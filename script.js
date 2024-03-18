@@ -8,8 +8,13 @@ let user = document.querySelector(".user");
 let winner = document.querySelector(".winner");
 let winModal = document.querySelector(".win-modal");
 let play = document.querySelector(".play");
-let score = JSON.parse(localStorage.getItem("score"));
-let scoreElement = document.getElementById(".score");
+let score = JSON.parse(localStorage.getItem("scores"));
+let scoreElement = document.getElementById("score");
+let ruleBut = document.querySelector(".btn-rules");
+let ruleModal = document.querySelector(".rule-modal");
+let ruleImg = document.querySelector(".rule-img");
+let close = document.querySelector(".close");
+
 if (score)
 {
     scoreElement.innerText = score;
@@ -51,7 +56,7 @@ con.forEach((element, index) =>
                 count = score;
                 count++;
                 scoreElement.innerText = count;
-                localStorage.setItem("score", JSON.stringify(count));
+                localStorage.setItem("scores", JSON.stringify(count));
             }
             else
             {
@@ -64,4 +69,20 @@ con.forEach((element, index) =>
 play.addEventListener("click", () =>
 {
     window.location.reload();
+})
+ruleBut.addEventListener("click", ()=>
+{
+    ruleModal.style.display = "flex";
+    setTimeout(() =>
+    {
+        ruleImg.style.transform = "translateY(0)";
+    }, 500);
+})
+close.addEventListener("click", () =>
+{
+    ruleImg.style.transform = "translateY(-200%)";
+    setTimeout(() =>
+    {
+        ruleModal.style.display = "none";
+    }, 500);
 })
