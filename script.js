@@ -14,12 +14,19 @@ let ruleBut = document.querySelector(".btn-rules");
 let ruleModal = document.querySelector(".rule-modal");
 let ruleImg = document.querySelector(".rule-img");
 let close = document.querySelector(".close");
+let score2 = JSON.parse(localStorage.getItem("scores2"));
+let scoreElement2 = document.getElementById("score2");
 
 if (score)
 {
     scoreElement.innerText = score;
 }
+if (score2)
+{
+    scoreElement2.innerText = score2;
+}
 let count = 0;
+let count2 = 0;
 
 con.forEach((element, index) => 
 {
@@ -62,6 +69,10 @@ con.forEach((element, index) =>
             {
                 winModal.style.display = "grid";
                 winner.innerText = "You LOOSE";
+                count2 = score2;
+                count2++;
+                scoreElement2.innerText = count2;
+                localStorage.setItem("scores2", JSON.stringify(count2));
             }
         }, 1500);
     });
